@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <!--报错：thyemleaf org.xml.sax.SAXParseException: 对实体 "*" 的引用必须以 ';' 分隔符结尾-->
+    <!--把 & 用&amp; 替换就好了-->
+    <script src="http://webapi.amap.com/maps?v=1.4.0&amp;key=0add8ecce9dc08efc4f59075f32ed1f0&amp;plugin=AMap.Autocomplete,AMap.PlaceSearch"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <!-- UI组件库 1.0 -->
+    <script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+</head>
+<body>
+<div class="nav">
+    <ul>
+        <li>
+            <div class="mean">查看地图</div>
+        </li>
+        <li>
+            <div class="mean">地图标注</div>
+        </li>
+    </ul>
+</div>
+<div class="main">
+    <!-- 主体区域 -->
+    <div class="autoclass">
+        <input type="text" id="keyword" name="keyword" style="width: 95%;"/>
+        <div id="result1" class="autobox" name="result1"></div>
+    </div>
+    <div id="container" style="width:500px; height:300px;">
+
+    </div>
+    <button id="area" onclick="abc()">change</button>
+
+</div>
+
+
+<script type="text/javascript">
+
+    //初始化地图对象，加载地图
+    // function mapInit(){
+    //     mapObj = new AMap.Map("iCenter",{
+    //     center:new AMap.LngLat(116.397428,39.90923), //地图中心点
+    //     level:11  //地图显示的比例尺级别
+    //     });
+    //     AMap.event.addListener(mapObj,'click',getLnglat); //点击事件
+    // }
+
+    var provinces = [{"center": "116.397428, 39.90923"}, {"center": "116.389826, 39.904928"}, {"center": "116.3890178, 39.90277972"}];
+    var map = new AMap.Map('container', {
+        resizeEnable: true,
+        zoom: 11,
+        center: [116.397428, 39.90923]
+    });
+
+    for (var i = 0; i &lt; provinces.length; i++) {
+        new AMap.Marker({
+            map: map,
+            position: provinces[i].center.split(','),
+        });
+    };
+
+    function abc() {
+        map.clearMap();
+        provinces = [{"center": "116.407233,39.902780"}, {"center": "116.409231,39.901808"}, {"center": "116.407848,39.902878"}];
+        var markers = [];
+        for (var i = 0; i &lt; provinces.length; i++) {
+            new AMap.Marker({
+                map: map,
+                position: provinces[i].center.split(','),
+            });
+        };
+    };
+
+    function addMarker() {
+        provinces = [{"center": "116.319866,39.916623"}, {"center": "116.319866,39.916623"}, {"center": "116.319866,39.916623"}];
+        var markers = [];
+        for (var i = 0; i &lt; provinces.length; i++) {
+            new AMap.Marker({
+                map: map,
+                position: provinces[i].center.split(','),
+            });
+        };
+    };
+
+    //输入提示
+    var autoOptions = {
+        input: "keyword"
+    };
+    var auto = new AMap.Autocomplete(autoOptions);
+    var placeSearch = new AMap.PlaceSearch({
+        map: map
+    });
+
+    AMap.event.addListener(auto, "select", setOverlay);//注册监听，当选中某条记录时会触发
+
+    function setOverlay(e) {
+        map.clearMap();
+        var lat = e.poi.location.lat;
+        var lng = e.poi.location.lng;
+        lnglat = [lng, lat];
+        // 设置缩放级别和中心点
+        map.setZoomAndCenter(17, lnglat);
+        // 在新中心点添加 marker
+        var marker = new AMap.Marker({
+            //icon可缺省，缺省时为默认的蓝色水滴图标，
+            icon: 'http://webapi.amap.com/theme/v1.3/markers/b/mark_r.png',//
+            map: map,
+            position: lnglat,
+            zoom: 8
+        });
+        // addCircle(100); //添加圆圈
+
+        addMarker()
+    };
+
+</script>
+</body>
+</html>
