@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <!--报错：thyemleaf org.xml.sax.SAXParseException: 对实体 "*" 的引用必须以 ';' 分隔符结尾-->
+    <!--把 & 用&amp; 替换就好了-->
+    <script src="http://webapi.amap.com/maps?v=1.4.0&key=0add8ecce9dc08efc4f59075f32ed1f0&plugin=AMap.Autocomplete,AMap.PlaceSearch"></script>
+    <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+    <!-- UI组件库 1.0 -->
+    <script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <script type="application/javascript" src="./js/main.js" ></script>
+    <script type="application/javascript" src="./js/map.js" ></script>
+</head>
+<body>
+<div class="nav">
+    <ul>
+        <li>
+            <div onclick="turnMap()" class="mean">查看地图</div>
+        </li>
+        <li>
+            <div onclick="turnAdd()" class="mean">地图标注</div>
+        </li>
+    </ul>
+</div>
+<div class="main">
+    <!-- 主体区域 -->
+    <div class="autoclass">
+        <input type="text" id="keyword" name="keyword" style="width: 95%;"/>
+        <div id="result1" class="autobox" name="result1"></div>
+    </div>
+    <div id="container" style="width:500px; height:300px;">
+
+    </div>
+    <button id="area" onclick="abc()">change</button>
+
+</div>
+
+
+<script type="text/javascript">
+    var map
+    var point
+    //初始化地图对象，加载地图
+//    var mapObj;
+//     function mapInit(){
+//         mapObj = new AMap.Map("iCenter",{
+//         center:new AMap.LngLat(116.397428,39.90923), //地图中心点
+//         level:11  //地图显示的比例尺级别
+//         });
+//         AMap.event.addListener(mapObj,'click',getLnglat); //点击事件
+//     }
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
