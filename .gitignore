@@ -27,5 +27,5 @@ nbdist/
 .mvn
 test
 
-mvnw
-mvnw.cmd
+/mvnw
+/mvnw.cmd

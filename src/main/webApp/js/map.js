@@ -20,7 +20,7 @@ $(function () {
             showMarker: true,        //定位成功后在定位到的位置显示点标记，默认：true
             showCircle: true,        //定位成功后用圆圈表示定位精度范围，默认：true
             panToLocation: true,     //定位成功后将定位到的位置作为地图中心点，默认：true
-            zoomToAccuracy:true      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+            zoomToAccuracy: true      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
         });
         map.addControl(geolocation);
         geolocation.getCurrentPosition();
@@ -29,20 +29,38 @@ $(function () {
     });
     //自动定位成功后添加标注点
     getPoint();
+    //初始化信息窗口
+    infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
+
+
+    // 添加标注点
     function addMarker(provinces) {
-        console.log('type：'+ typeof JSON.stringify(provinces));
+        console.log('type：' + typeof JSON.stringify(provinces));
         console.log(provinces.length);
-        var markers = [];
-        for (var i = 0,len = provinces.length; i<len; i++) {
-            console.log("进入加点模式")
-            new AMap.Marker({
+        for (var i = 0, len = provinces.length; i < len; i++) {
+            var marker = new AMap.Marker({
                 map: map,
                 title: provinces[i].name,
                 position: provinces[i].center.split(','),
             });
+            //鼠标点击marker弹出自定义的信息窗体
+            marker.content = '<div><div style="padding:0px 0px 0px 4px;"><b>' + provinces[i].name + '</b><br>电话 :' + provinces[i].phone + ' <br>地址 :' + provinces[i].addr + '</div></div>'
+            marker.on('click', markerClick);
+            // 加载地图时会自动打开一个信息窗口,需要此功能去掉注释
+            // marker.emit('click', {target: marker});
         }
         ;
+
     };
+
+    //关闭信息窗体
+    function markerClick(e) {
+        infoWindow.setContent(e.target.content);
+        infoWindow.open(map, e.target.getPosition());
+    }
+
+    map.setFitView();
+
 //输入提示
     var autoOptions = {
         input: "keyword"
@@ -74,7 +92,6 @@ $(function () {
     };
 
 
-
     function getPoint() {
         //获取地图中心点经纬度坐标值
         point = map.getCenter();
@@ -104,7 +121,7 @@ $(function () {
     };
 
     // 异步加载插件，同步加载插件的方法是在引入高德地图js的那一行的plugin后面加上插件的名称
-    AMap.plugin(['AMap.ToolBar','AMap.Scale'], function() {
+    AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], function () {
         //TODO:几个插件的初始化
         map.addControl(new AMap.Scale({
             map: map
