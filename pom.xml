@@ -40,11 +40,11 @@
 			<artifactId>spring-boot-autoconfigure</artifactId>
 			<version>1.5.2.RELEASE</version>
 		</dependency>
-		<!--thymeleaf模板解析-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
+		<!--thymeleaf模板解析,如果使用静态页面，不使用th模版的话，就不要引入该jar包，页面会报错-->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

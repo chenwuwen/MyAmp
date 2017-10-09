@@ -9,6 +9,7 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(){
+        System.out.println("进入页面");
         return "index";
     }
 }

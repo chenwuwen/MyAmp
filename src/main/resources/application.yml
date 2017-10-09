@@ -6,21 +6,20 @@ spring:
     password: root
     url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&transformedBitIsBoolean=true&useSSL=false&serverTimezone=UTC
     type: com.alibaba.druid.pool.DruidDataSource
-  thymeleaf:
-     prefix: classpath:/static/
-     suffix: .html
-     cache: false
-     model: HTML5
-     encoding: UTF-8
+#é…ç½®é¡µé¢ï¼Œå¦‚æœä½¿ç”¨thæ¨¡ç‰ˆå¼•æ“çš„è¯ï¼Œé…ç½®æ–¹å¼ç¨æœ‰ä¸åŒ
+  mvc:
+     view:
+       prefix: /page/
+       suffix: .html
   jackson:
-    date-format: yyyy-MM-dd HH:mm:ss  #ÉèÖÃjson·µ»ØÈÕÆÚ¸ñÊ½
-    timeZone: GMT+8   				#ÉèÖÃÊ±Çø,·ñÔò¿ÉÄÜÇ°Ì¨·µ»ØÊ±¼äÓëÊı¾İ¿â²»Ò»ÖÂ
+    date-format: yyyy-MM-dd HH:mm:ss  #è®¾ç½®jsonè¿”å›æ—¥æœŸæ ¼å¼
+    timeZone: GMT+8   				#è®¾ç½®æ—¶åŒº,å¦åˆ™å¯èƒ½å‰å°è¿”å›æ—¶é—´ä¸æ•°æ®åº“ä¸ä¸€è‡´
 
 mybatis:
     mapperLocations: classpath:mapper/*.xml
     typeAliasesPackage: com.hmcmsdemo.model
     config-locations: classpath:mybatis-conf.xml
-#Õâ¸ö²»ÅäÖÃÒ²¿ÉÒÔresourceÖĞÓĞÁËlogback.xml¼´¿ÉÊµÏÖ×Ô¶¨ÒåÈÕÖ¾ÊµÏÖ
+#è¿™ä¸ªä¸é…ç½®ä¹Ÿå¯ä»¥resourceä¸­æœ‰äº†logback.xmlå³å¯å®ç°è‡ªå®šä¹‰æ—¥å¿—å®ç°
 #logging:
 #     config: classpath:logback-spring.xml
 #     debug: true
