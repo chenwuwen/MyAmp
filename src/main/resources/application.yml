@@ -4,7 +4,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: root
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&transformedBitIsBoolean=true&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/map?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&transformedBitIsBoolean=true&useSSL=false&serverTimezone=UTC
     type: com.alibaba.druid.pool.DruidDataSource
 #配置页面，如果使用th模版引擎的话，配置方式稍有不同
   mvc:
@@ -17,7 +17,7 @@ spring:
 
 mybatis:
     mapperLocations: classpath:mapper/*.xml
-    typeAliasesPackage: com.hmcmsdemo.model
+    typeAliasesPackage: com.kanyun.myamap.pojo
     config-locations: classpath:mybatis-conf.xml
 #这个不配置也可以resource中有了logback.xml即可实现自定义日志实现
 #logging:
@@ -26,3 +26,8 @@ mybatis:
 #     level: root:DEBUG
 #     path: classpath:logs
 #     file: cms.log
+
+# Server settings
+server:
+    port: 8080
+    address: 127.0.0.1
