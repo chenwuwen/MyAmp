@@ -22,7 +22,7 @@ public class MapController {
     @RequestMapping("/addpoint")
     @ResponseBody
     public Integer addpoint(Mymap map) {
-        List list = new ArrayList<>();
+//        List list = new ArrayList<>();
 //        list.add(Double.parseDouble(map.getLongitude()));
 //        list.add(Double.parseDouble(map.getLatitude()));
 //        map.setResult(JSONObject.toJSONString(list));
