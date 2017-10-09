@@ -29,6 +29,8 @@ body{
 li{
     list-style-type:none
 }
-
+.amap-logo{
+    display: none;
+}
 /*地图信息窗体*/
 

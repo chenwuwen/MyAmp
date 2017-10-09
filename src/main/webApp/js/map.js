@@ -27,6 +27,12 @@ $(function () {
         AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
         AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
     });
+    // 地图加载完成事件
+    map.on('complete', function() {
+        $(".amap-logo").remove();
+        $(".amap-copyright").remove();
+    });
+
     //自动定位成功后添加标注点
     getPoint();
     //初始化信息窗口
