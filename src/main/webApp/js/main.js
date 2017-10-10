@@ -10,11 +10,11 @@ function turnAdd() {
 
         }
     })
-}
+};
 
 function turnMap() {
     window.location.href='/'
-}
+};
 
 function sub(e) {
     e.preventDefault();
@@ -28,5 +28,5 @@ function sub(e) {
             alert('add fail');
         }
     })
-}
+};
 
